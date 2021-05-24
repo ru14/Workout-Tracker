@@ -4,13 +4,16 @@
   "description": "The  workout tracker use Mongo database with a Mongoose schema and handle routes with Express.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "node seeders/seed.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ru14/Workout-Tracker.git"
   },
-  "author": "",
+  "author": "Raginee",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ru14/Workout-Tracker/issues"
@@ -19,6 +22,7 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongodb": "^3.6.8"
+    "mongoose": "^5.12.10",
+    "morgan": "^1.10.0"
   }
 }

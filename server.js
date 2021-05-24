@@ -27,11 +27,9 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-//const databaseUrl = "notetaker";
-const collections = ["notes"];
 
-const db = mongoose(databaseUrl, collections);
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdb", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdb", { useNewUrlParser: true});
+const db = mongoose.connection;
 db.on("error", error => {
   console.log("Database Error:", error);
 });
@@ -124,6 +122,6 @@ app.delete("/clearall", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("App running on port 3000!");
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`);
 });
