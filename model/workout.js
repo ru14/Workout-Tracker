@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const cardioSchema = new Schema({
 
-    cardi_name: {
+    name: {
         type: String,
         trim: true,
         required: "Enter a type for Cardio"
@@ -16,13 +16,20 @@ const cardioSchema = new Schema({
     duration: {
         type: Number,
         required: "Enter an amount"
-    }
+    },
+    date: { type: Date,
+         default: Date.now 
+        }
 });
 
-
 const resistanceSchema = new Schema({
-
-    exercise_name: {
+    
+    type: {
+        type: String,
+        trim: true,
+        required: "Enter a type for Cardio"
+    },
+    name: {
         type: String,
         trim: true,
         required: "Enter a type for Cardio"
@@ -31,19 +38,34 @@ const resistanceSchema = new Schema({
         type: Number,
         required: "Enter an amount"
     },
-    num_sets: {
+    sets: {
         type: Number,
         required: "Enter an amount"
     },
-    num_reps: {
+    reps: {
         type: Number,
         required: "Enter an amount"
     },
     duration: {
         type: Number,
         required: "Enter an amount"
+    },
+    date: { 
+        type: Date, 
+        default: Date.now 
     }
 });
+
+cardioSchema.virtual("totallDuration").get(function(){
+    let totalDuration = 0
+    this.duration.forEach(duration => {
+        totalDuration += this.duration;
+    });
+    return totalDuration
+});
+
+cardioSchema.set('toJSON', { virtuals: true });
+
 const Cardio = mongoose.model("cardioSchema", cardioSchema);
 
 const Resistance = mongoose.model("resistanceSchema", resistanceSchema)
