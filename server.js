@@ -1,12 +1,3 @@
-/*
-0. install mongodb packages, express, 
-1. fill out server.js with express boilerplate code
-2. express will need to serve the public folder
-3. you will write your routes on the express side, uysing the routes already written in the api.js file
-4. write your schema and connection.js for mongo
-5. write the mongodb code to take the res.json or whatever input you receive and send it to your mongodb database
-
-*/
 
 const express = require("express");
 const mongoose = require("mongoose");
