@@ -3,10 +3,7 @@ const { db } = require("../model/userModel.js");
 const userModel = require("../models/userModel.js");
 
 
-// router.post("/submit",({body},res)=>{
-//   console.log(body)
-//   const book = body
-// })
+
 
 router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "./public/index.html"));
