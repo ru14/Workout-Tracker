@@ -55,7 +55,7 @@ const resistanceSchema = new Schema({
         default: Date.now 
     }
 });
-
+// Mongoose virtual property, "totalDuration" which will not be stored in MongoDB.
 cardioSchema.virtual("totallDuration").get(function(){
     let totalDuration = 0
     this.duration.forEach(duration => {
@@ -63,7 +63,7 @@ cardioSchema.virtual("totallDuration").get(function(){
     });
     return totalDuration
 });
-
+// Since virtuals are not included when passing a document to Express' res.json() function, the toJSON schema option needs to be set to { virtuals: true }.
 cardioSchema.set('toJSON', { virtuals: true });
 
 const Cardio = mongoose.model("cardioSchema", cardioSchema);
