@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { db } = require("../model/userModel.js");
-const userModel = require("../models/userModel.js");
-
+const userModel = require("../model/userModel.js");
+const Workout = require("../model/workout.js")
 
 
 
@@ -11,13 +11,13 @@ router.get("/", (req, res) => {
 router.get("/exercise", function (req, res) {
   res.sendFile(path.join(__dirname, "../public/exercise.html"));
 });
-app.get("/stats", function (req, res) {
+router.get("/stats", function (req, res) {
   res.sendFile(path.join(__dirname, "../public/stats.html"));
 });
 
 
 
-app.get("/api/workouts", (req, res) => {
+router.get("/api/workouts", (req, res) => {
   db.workout.find({})
     .then(dbworkout => {
       res.json(dbworkout);

@@ -1,7 +1,7 @@
 module.exports = {
-    Cardio: require("./ Cardio")
+    Cardio: require("./workout")
   };
   module.exports = {
-    Resistance: require("./ Resistance")
+    Resistance: require("./workout")
   };
   
