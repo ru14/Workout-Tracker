@@ -6,10 +6,7 @@ const path = require("path")
 
 
 
-db.Workout.aggregate([
-  { $match: { dutation: "A" } },
-  { $group: { _id: "$duration_id", totalDutarion: { $sum: "$dutation" } } }
-])
+
 //what is $ crust_id
 
 
