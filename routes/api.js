@@ -1,19 +1,16 @@
 const router = require("express").Router();
-//const { db } = require("../model/userModel.js");
-//const userModel = require("../model/userModel.js");
+const { db } = require("../model/workout.js");
+
 const Workout = require("../model/workout.js")
 const path = require("path")
 
 
-router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "./public/index.html"));
-});
-router.get("/exercise", function (req, res) {
-  res.sendFile(path.join(__dirname, "../public/exercise.html"));
-});
-router.get("/stats", function (req, res) {
-  res.sendFile(path.join(__dirname, "../public/stats.html"));
-});
+
+db.Workout.aggregate([
+  { $match: { dutation: "A" } },
+  { $group: { _id: "$duration_id", totalDutarion: { $sum: "$dutation" } } }
+])
+//what is $ crust_id
 
 
 
@@ -50,7 +47,7 @@ router.get("/api/workouts/range", (req, res) => {
 
 
 router.put("/api/workouts/:id", (req, res) => {
-  console.log("hit the routes")
+  //console.log("hit the routes")
   Workout.findByIdAndUpdate(
       req.params.id,
       {
