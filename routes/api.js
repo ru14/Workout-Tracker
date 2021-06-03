@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const { db } = require("../model/userModel.js");
-const userModel = require("../model/userModel.js");
+//const { db } = require("../model/userModel.js");
+//const userModel = require("../model/userModel.js");
 const Workout = require("../model/workout.js")
-
+const path = require("path")
 
 
 router.get("/", (req, res) => {
@@ -18,7 +18,7 @@ router.get("/stats", function (req, res) {
 
 
 router.get("/api/workouts", (req, res) => {
-  db.workout.find({})
+  Workout.find({})
     .then(dbworkout => {
       res.json(dbworkout);
     })
@@ -28,7 +28,7 @@ router.get("/api/workouts", (req, res) => {
 });
 
 router.post("/api/workouts", ({ body }, res) => {
-  db.workout.createOne(body)
+  Workout.create(body)
     .then(dbWorkout => {
       res.json(dbWorkout);
     })
@@ -38,7 +38,7 @@ router.post("/api/workouts", ({ body }, res) => {
 });
 
 router.get("/api/workouts/range", (req, res) => {
-  db.Workout.find({})
+  Workout.find({})
     .then(dbUser => {
       res.json(dbUser);
     })
@@ -49,49 +49,41 @@ router.get("/api/workouts/range", (req, res) => {
 
 
 
-router.post("/api/workouts/:id", (req, res) => {
-  db.workout.findByIdAndUpdate(
-    {
-      _id: mongoose.ObjectId(req.params.id)
-    },
-    {
-      $push: req.body
-    },
-
-    (error, data) => {
-      if (error) {
-        res.send(error);
-      } else {
-        res.send(data);
+router.put("/api/workouts/:id", (req, res) => {
+  console.log("hit the routes")
+  Workout.findByIdAndUpdate(
+      req.params.id,
+      {
+          $push: {
+              exercises: req.body
+          }
       }
-    }
-  );
-});
-
-router.delete("/delete/:id", (req, res) => {
-  db.workout.remove(
-    {
-      _id: mongoose.ObjectID(req.params.id)
-    },
-    (error, data) => {
-      if (error) {
-        res.send(error);
-      } else {
-        res.send(data);
-      }
-    }
-  );
-});
-
-router.delete("/clearall", (req, res) => {
-  db.workout.remove({}, (error, response) => {
-    if (error) {
-      res.send(error);
-    } else {
-      res.send(response);
-    }
+  )
+  .then(dbWorkout => {
+      res.json(dbWorkout);
+  })
+  .catch(err => {
+      res.json(err);
   });
 });
+
+router.delete('/:id',(req, res) => {
+  Workout.destroy({
+      where: {
+          id: req.params.id
+      }
+  }).then(dbWorkout => {
+      if (!dbWorkout) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
+      }
+      res.json(dbWorkout);
+  }).catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+  });
+});
+
 
 
 module.exports = router;
