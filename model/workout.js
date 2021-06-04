@@ -46,9 +46,9 @@ const Workout = mongoose.model("Workout", workoutSchemas)
 
 db.Workout.aggregate([
    
-    { $group: { 
+    { $addFeild: { 
         _id: null, 
-        totalDutarion: { $sum: "$dutation" } } }
+        totalDutarion: { $sum: "$exercise.dutation" } } }
   ])
 
 module.exports = Workout
