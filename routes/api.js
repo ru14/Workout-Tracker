@@ -6,13 +6,15 @@ const path = require("path")
 
 
 
-
-
-
-
-
 router.get("/api/workouts", (req, res) => {
-  Workout.find({})
+  Workout.aggregate([
+
+    {
+      $addFeilds: {
+        totalDuration: { $sum: "$exercises.duration" }
+      }
+    }
+  ])
     .then(dbworkout => {
       res.json(dbworkout);
     })
@@ -64,6 +66,9 @@ router.put("/api/workouts/:id", (req, res) => {
       $push: {
         exercises: req.body
       }
+    },
+    {
+      new:true
     }
   )
     .then(dbWorkout => {

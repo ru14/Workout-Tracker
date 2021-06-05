@@ -6,9 +6,9 @@ const path = require("path");
 
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
-const User = require("./model/userModel");
+//const User = require("./model/userModel");
 const app = express();
 
 app.use(logger("dev"));
@@ -18,6 +18,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 app.use(require("./routes/api.js"));
+app.use(require("./routes/htmlRoutes.js"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", { useNewUrlParser: true});
 const db = mongoose.connection;
