@@ -2,11 +2,6 @@
 const router = require("express").Router();
 const path = require("path")
 
-db.Workout.aggregate([
-    { $match: { status: "A" } },
-    { $group: { _id: "$cust_id", totalDutarion: { $sum: "$amount" } } }
- ])
-
 
 
 

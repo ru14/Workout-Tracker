@@ -44,11 +44,5 @@ const workoutSchemas = new Schema({
 
 const Workout = mongoose.model("Workout", workoutSchemas)
 
-db.Workout.aggregate([
-   
-    { $addFeild: { 
-        _id: null, 
-        totalDutarion: { $sum: "$exercise.dutation" } } }
-  ])
 
 module.exports = Workout

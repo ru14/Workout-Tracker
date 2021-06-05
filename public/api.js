@@ -1,3 +1,4 @@
+//fetch calls
 const API = {
   async getLastWorkout() {
     let res;
