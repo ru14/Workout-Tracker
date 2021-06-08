@@ -13,6 +13,11 @@ router.get("/api/workouts", (req, res) => {
       $addFields: {
         totalDuration: { $sum: "$exercises.duration" }
       }
+    },
+    {
+      $addFields: {
+        totalWeight: { $sum: "$exercises.weight" }
+      }
     }
   ])
     .then(dbworkout => {
@@ -40,6 +45,11 @@ router.get("/api/workouts/range", (req, res) => {
     {
       $addFields: {
         totalDuration: { $sum: "$exercises.duration" }
+      }
+    },
+    {
+      $addFields: {
+        totalWeight: { $sum: "$exercises.weight" }
       }
     }
   ]) .sort({
