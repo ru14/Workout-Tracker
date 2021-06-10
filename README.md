@@ -1,8 +1,13 @@
 # Workout-Tracker
 The  workout tracker use Mongo database with a Mongoose schema and handle routes with Express.
-## User Story
+### Table of Contents
+* General Info
+* Deployed Link
+* Technologies
 
-* As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
+### General Info
+This app lets you view, create, and track daily workouts. You can log multiple exercises in a workout on a given day and track the name, type, weight, sets, reps, duration of exercise, and distance traveled if the exercise is a cardio exercise.
+
 
 
 ![Workout Tracker](public/assets/images/workout.png)
@@ -11,31 +16,7 @@ The  workout tracker use Mongo database with a Mongoose schema and handle routes
 
 ![Stats](public/assets/images/stats.png)
 
-## Business Context
 
-A consumer will reach their fitness goals more quickly when they track their workout progress.
-
-## Acceptance Criteria
-
-When the user loads the page, they should be given the option to create a new workout or continue with their last workout.
-
-The user should be able to:
-
-  * Add exercises to the most recent workout plan.
-
-  * Add new exercises to a new workout plan
-
-  * View the combined weight of multiple exercises from the past seven workouts on the `stats` page.
-
-  * View the total duration of each workout from the past seven workouts on the `stats` page.
-
-> **Important:** Look into using a MongoDB aggregate function to dynamically add up and return the total duration for each workout. Check out the [MongoDB documentation on the $addFields](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/), the [MongoDB documentation on the $sum operator](https://docs.mongodb.com/manual/reference/operator/aggregation/sum/), and the [Mongoose documentation on aggregate functions](https://mongoosejs.com/docs/api.html#aggregate_Aggregate) to learn how it can be accomplished.
-
-To deploy an application with a MongoDB database to Heroku, you'll need to set up a MongoDB Atlas account and connect a database from there to your application. Be sure to use the following guides for support:
-
-  * [Set Up MongoDB Atlas](../04-Important/MongoAtlas-Setup.md)
-
-  * [Deploy with Heroku and MongoDB Atlas](../04-Important/MongoAtlas-Deploy.md)
 
 ### Technologies
 * JavaScript
@@ -49,7 +30,7 @@ To deploy an application with a MongoDB database to Heroku, you'll need to set u
 You are required to submit the following:
 
 * The URL to the deployed application
-
+https://ancient-beyond-52470.herokuapp.com/
 
 * The URL to the GitHub repository
 https://github.com/ru14/Workout-Tracker
