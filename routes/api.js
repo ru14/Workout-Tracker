@@ -2,7 +2,8 @@ const router = require("express").Router();
 //const { db } = require("../model/workout.js");
 
 const Workout = require("../model/workout.js")
-const path = require("path")
+const path = require("path");
+const { create } = require("../model/workout.js");
 
 
 
@@ -70,6 +71,7 @@ router.get("/api/workouts/range", (req, res) => {
 
 router.put("/api/workouts/:id", (req, res) => {
   //console.log("hit the routes")
+  
   Workout.findByIdAndUpdate(
     req.params.id,
     {
