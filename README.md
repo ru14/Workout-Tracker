@@ -10,11 +10,11 @@ This app lets you view, create, and track daily workouts. You can log multiple e
 
 
 
-![Workout Tracker](public/assets/images/workout.png)
+![Workout Tracker](/assets/images/workout.png)
 
-![Exercise](public/assets/images/exercise.png)
+![Exercise](/assets/images/exercise.png)
 
-![Stats](public/assets/images/stats.png)
+![Stats](/assets/images/stats.png)
 
 
 
